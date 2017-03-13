@@ -1,0 +1,44 @@
+::selection { background-color: #E13300; color: white; }
+::-moz-selection { background-color: #E13300; color: white; }
+
+body {
+	background-color: #fff;
+	margin: 40px;
+	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	color: #4F5155;
+	line-height: 0px;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+#body {
+	margin: 0 15px 0 15px;
+}
+
+thead tr {
+    background-color: #428bca;
+    color: white;
+}
+
+.form-file-group {
+	width: 50%;
+} 
+
+.total-records {
+	height: 20px;
+}
+
+.clear20 {
+	margin-top: 20px;
+	clear: both;
+}
+
+@media only screen and (max-width: 768px) {
+    .form-file-group {
+        width: 100%;
+    }
+}
