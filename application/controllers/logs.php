@@ -8,7 +8,9 @@ class Logs extends CI_Controller {
 		// Load url helper
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->library('Pagination');
+		$this->load->library('Ajax_Pagination');
+		$this->load->library('Log_Parser');
+        $this->perPage = 10;
 	}
 
 	public function index()
@@ -19,24 +21,24 @@ class Logs extends CI_Controller {
 	public function get_logs()
 	{
 		$file = $this->input->post('file');
-		$start = $this->input->post('url');
-		$display_records = 10;
+		$page = $this->input->post('page');
+		if(!$page) {
+            $offset = 0;
+        } else {
+            $offset = $page;
+        }
 
+		//print_r(pathinfo($file));die;
 		if(file_exists($file))
-		{
-			$this->load->library('Log_Parser');
-			
-			$data['result'] = $this->log_parser->get_file($file, 1, ($display_records - 1) + 1);
-			$data['total_count'] = $this->log_parser->get_file_count($file);
+		{	
+			$data['result'] = $this->log_parser->get_file_contents($file, $offset, $this->perPage);
+			$data['total_count'] = $this->log_parser->get_contents_count($file);
 
-			$config["total_rows"] = $data['total_count'];
-			$config["per_page"] = $display_records;
-        	$config["display_pages"] = FALSE;
-        	$config["uri_segment"] = 3;
-        	//$config['page_no'] = $start;
+			$config['total_rows'] = $data['total_count'];
+        	$config['per_page'] = $this->perPage;
+        	$config['display_pageno'] = false;
 
-        	$this->pagination->initialize($config);
-        	 $data["links"] = $this->pagination->create_links();
+        	$this->ajax_pagination->initialize($config);
 
 			$this->load->view('logs/_logs.php', $data);	
 		} else {

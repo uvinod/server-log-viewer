@@ -11,30 +11,50 @@ class Log_Parser {
 
     /**     
      *
-     * @param 	String 	@log_file
+     * @param 	String 	@path
+     * @param 	String 	@offset
+     * @param 	String 	@path
      * @return 	Array
      */
-	public function get_file($path, $start, $end)
+	public function get_file_contents($path, $offset, $limit)
 	{	
 		$cols = array();
+		$total_count = $this->get_contents_count($path);
 
-		if($this->get_file_count($path) > 0) {
+		if($total_count > 0) {
 
-			$file = file($path);
+			$file = $this->read_file($path);
 			
-			for ($i = ($start - 1); $i < $end; $i++) {
-				$cols[$i]['line_no'] = $i+1;
-				$cols[$i]['content'] = $file[$i];
+			for ($i = $offset; $i < $limit + $offset; $i++) {
+				if($i < $total_count)
+				{
+					$cols[$i]['line_no'] = $i+1;
+					$cols[$i]['content'] = $file[$i];
+				}
 			}
 		}
 		
 		return $cols;		
 	}
 
-	public function get_file_count($path)
+	public function get_contents_count($path)
 	{	
-		$file = file($path);
+		return count($this->read_file($path));
+	}
 
-		return count($file);
+	private function read_file($path)
+	{
+		$handle = @fopen($path, "r"); 
+		if ($handle) { 
+		   while (!feof($handle)) { 
+		   	   $line = fgets($handle, 4096); 
+		   	   if(strlen(trim($line)) > 0) {
+		   	   		$file[] = $line; 
+		   	   }	
+		   } 
+		   fclose($handle); 
+		}
+
+		return $file;
 	}
 }

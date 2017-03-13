@@ -7,13 +7,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Log File Viewer</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/main.css">
-
+	<style type="text/css">
+	
+	</style>
 	<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.0.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/bootstrap/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/main.js"></script>
 	<script>
 		var base_url = '<?php echo base_url(); ?>';
 	</script>
+
 	
 </head>
 <body>

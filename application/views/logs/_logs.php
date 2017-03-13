@@ -25,24 +25,9 @@
       </tbody>
     </table>
   </div>  
-
-  <div class="pagination"><?php echo $links; ?></div>
   
-  <!--
-  <div class="btn-group btn-group-justified form-file-group">
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary">|<</button>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary"><</button>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary">></button>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary">>|</button>
-      </div>
-  </div>-->
+  <?php echo $this->ajax_pagination->create_links(); ?>        
+  
 <?php } else { ?>
   <div></div>
 <?php } ?>
