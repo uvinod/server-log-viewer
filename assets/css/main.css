@@ -48,27 +48,37 @@ div.pagination {
 div.pagination a {
 	margin: 2px;
 	padding: 0.5em 0.64em 0.43em 0.64em;
-	background-color: #FD1C5B;
+	background-color: #38BF3D;
 	text-decoration: none; /* no underline */
 	color: #fff;
 }
 div.pagination a:hover, div.pagination a:active {
 	padding: 0.5em 0.64em 0.43em 0.64em;
 	margin: 2px;
-	background-color: #FD1C5B;
+	background-color: #7AD37D;
 	color: #fff;
 }
 div.pagination span.current {
 		padding: 0.5em 0.64em 0.43em 0.64em;
 		margin: 2px;
-		background-color: #f6efcc;
+		background-color: #38BF3D;
 		color: #6d643c;
 	}
 div.pagination span.disabled {
 		display:none;
 	}
-.pagination ul li{display: inline-block;}
-.pagination ul li a.active{opacity: .5;}
+.pagination ul li{
+	display: inline-block;
+}
+.pagination ul li a.active{
+	opacity: .5;
+}
+
+#data-loader { 
+	display: none;  
+	text-align: center;
+	margin: 50px;
+}
 
 @media only screen and (max-width: 768px) {
     .form-file-group {

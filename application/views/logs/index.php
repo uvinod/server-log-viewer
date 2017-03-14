@@ -37,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>		
 			</form>
 			<div id="data-container"></div>
+			<div id="data-loader"><img src="<?php echo base_url(); ?>assets/images/cube.gif"</div>
 		</div>
 
 	</div>

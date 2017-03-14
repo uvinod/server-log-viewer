@@ -16,12 +16,18 @@ $(function(){
 	 * @return html   Populate page with contents HTML
 	 */
 	var getData = function(offset){
-		$.post(base_url+"index.php/logs/get_logs/"+offset,
+
+		$('#data-container').css('display', 'none');
+		$('#data-loader').css('display', 'block');
+		
+		$.post(base_url+"logs/get_logs/"+offset,
 	    {
 	        file: $("#file").val(),
 	        page: offset
 	    },
 	    function(data, status){
+	    	$('#data-loader').css('display', 'none');
+	    	$('#data-container').css('display', 'block');
 	        $("#data-container").html(data);
 	    });
 	}
