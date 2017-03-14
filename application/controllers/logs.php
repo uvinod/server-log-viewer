@@ -13,23 +13,33 @@ class Logs extends CI_Controller {
         $this->perPage = 10;
 	}
 
+	/**     
+     * Function to display landing page with form
+     * @access 	public     
+     * @return 	View   Load landing page
+     */
 	public function index()
 	{
 		$this->load->view('logs/index.php');
 	}
 
+	/**     
+     * Function to retrieve contents from a file with pagination
+     * @access 	public          
+     * @return 	View   If contents exist display contents, else display error message
+     */
 	public function get_logs()
 	{
 		$file = $this->input->post('file');
 		$page = $this->input->post('page');
+		
 		if(!$page) {
             $offset = 0;
         } else {
             $offset = $page;
         }
-
-		//print_r(pathinfo($file));die;
-		if(file_exists($file))
+		
+		if(!is_dir($file) && file_exists($file))
 		{	
 			$data['result'] = $this->log_parser->get_file_contents($file, $offset, $this->perPage);
 			$data['total_count'] = $this->log_parser->get_contents_count($file);

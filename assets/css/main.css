@@ -37,6 +37,39 @@ thead tr {
 	clear: both;
 }
 
+/* Pagination */
+div.pagination {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", LucidaGrande, "Lucida Sans", Geneva, Verdana, sans-serif;
+	padding:2px;
+	margin: 20px 10px;
+    float: right;
+}
+
+div.pagination a {
+	margin: 2px;
+	padding: 0.5em 0.64em 0.43em 0.64em;
+	background-color: #FD1C5B;
+	text-decoration: none; /* no underline */
+	color: #fff;
+}
+div.pagination a:hover, div.pagination a:active {
+	padding: 0.5em 0.64em 0.43em 0.64em;
+	margin: 2px;
+	background-color: #FD1C5B;
+	color: #fff;
+}
+div.pagination span.current {
+		padding: 0.5em 0.64em 0.43em 0.64em;
+		margin: 2px;
+		background-color: #f6efcc;
+		color: #6d643c;
+	}
+div.pagination span.disabled {
+		display:none;
+	}
+.pagination ul li{display: inline-block;}
+.pagination ul li a.active{opacity: .5;}
+
 @media only screen and (max-width: 768px) {
     .form-file-group {
         width: 100%;

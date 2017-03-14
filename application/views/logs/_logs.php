@@ -9,7 +9,7 @@
       <thead>
         <tr>
           <td class="col-xs-1">Line No.</td>
-          <td>Description</td>
+          <td>Content</td>
         </tr>
         
       </thead>
@@ -29,5 +29,5 @@
   <?php echo $this->ajax_pagination->create_links(); ?>        
   
 <?php } else { ?>
-  <div></div>
+  <div class="alert alert-danger form-file-group">No data available</div>
 <?php } ?>

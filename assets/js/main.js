@@ -1,25 +1,40 @@
 $(function(){
+
+	/**
+	 * Form submit
+	 * @return Call getData function
+	 */
 	$("#form").submit(function(e){
    	 	e.preventDefault();	
-		getData(1);   	 	   	 	
+		getData(0);   	 	   	 	
 	});
 
-	var getData = function(start){
-		//alert(base_url+"logs/get_logs/"+start);
-		$.post("index.php/logs/get_logs",
+
+	/**
+	 * Call server side get contents using AJAX
+	 * @param  offset Page offset
+	 * @return html   Populate page with contents HTML
+	 */
+	var getData = function(offset){
+		$.post(base_url+"index.php/logs/get_logs/"+offset,
 	    {
 	        file: $("#file").val(),
-	        start: base_url+"logs/get_logs/"+start,
+	        page: offset
 	    },
 	    function(data, status){
 	        $("#data-container").html(data);
 	    });
 	}
 
+	/**
+	 * Click to call pagination	 
+	 * @return Call getData function
+	 */
 	$(document).on('click', '.pagination a', function(e) {
 	   e.preventDefault();
-	   var start = $(this).attr('href');
+	   var offset = $(this).attr('attr-pageno');
 	   //start = start.replace('/', '');
-       getData(start);
+       getData(offset);
     });
+    
 });
